@@ -1,415 +1,263 @@
 <!DOCTYPE html>
-<!-- saved from url=(0038)https://aypan17.github.io/machiavelli/ -->
-<html>
-  <link type="text/css" rel="stylesheet" id="dark-mode-custom-link" /><link
-    type="text/css"
-    rel="stylesheet"
-    id="dark-mode-general-link"
-  /><style lang="en" type="text/css" id="dark-mode-custom-style"></style
-  ><style lang="en" type="text/css" id="dark-mode-native-style"></style
-  ><style lang="en" type="text/css" id="dark-mode-native-sheet"></style
-  ><head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    
+    <!-- Стили -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <link rel="stylesheet" href="files/bootstrap.min.css" />
-    <link href="files/css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="files/style.css" />
+    <!-- Скрипты -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <title>Корпус спонтанной русской речи</title>
+</head>
+<body>
+    <!-- Интерактивный фон -->
+    <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
 
-    <object type="text/html" data="header-vars.html"></object>
-    <title>INSERT TITLE</title>
-    <meta property="og:site_name" content="INSERT TITLE" />
-    <meta property="og:title" content="INSERT TITLE" />
-    <meta property="og:description" content="INSERT DESCRIPTION" />
-    <meta property="og:url" content="INSERT LINK" />
-    <meta property="og:image" content="INSERT PREVIEW IMAGE" />
-
-    <meta property="article:publisher" content="https://apartresearch.com" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="INSERT TITLE" />
-    <meta name="twitter:description" content="INSERT DESCRIPTION" />
-    <meta name="twitter:url" content="INSERT LINK" />
-    <meta name="twitter:image" content="INSERT PREVIEW IMAGE" />
-
-    <script src="files/p5.js"></script>
-    <script
-      language="javascript"
-      type="text/javascript"
-      src="files/sketch.js"
-    ></script>
-  </head>
-
-  <div>
-    <template shadowrootmode="open">
-      <style>
-        @font-face {
-          font-family: Poppins;
-          font-style: normal;
-          font-display: swap;
-          font-weight: 400;
-          src: url(poppins-devanagari-400-normal.20fc2635.woff2) format("woff2"),
-            url(poppins-all-400-normal.0298587e.woff) format("woff");
-          unicode-range: U+900-97F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D,
-            U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
-        }
-        @font-face {
-          font-family: Poppins;
-          font-style: normal;
-          font-display: swap;
-          font-weight: 400;
-          src: url(poppins-latin-ext-400-normal.9f87e1a8.woff2) format("woff2"),
-            url(poppins-all-400-normal.0298587e.woff) format("woff");
-          unicode-range: U+100-24F, U+259, U+1E??, U+2020, U+20A0-20AB,
-            U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-        }
-        @font-face {
-          font-family: Poppins;
-          font-style: normal;
-          font-display: swap;
-          font-weight: 400;
-          src: url(poppins-latin-400-normal.53f07e8c.woff2) format("woff2"),
-            url(poppins-all-400-normal.0298587e.woff) format("woff");
-          unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
-            U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-            U+FEFF, U+FFFD;
-        }
-        @font-face {
-          font-family: Poppins;
-          font-style: normal;
-          font-display: swap;
-          font-weight: 600;
-          src: url(poppins-devanagari-600-normal.5b72b0b7.woff2) format("woff2"),
-            url(poppins-all-600-normal.29420735.woff) format("woff");
-          unicode-range: U+900-97F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D,
-            U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
-        }
-        @font-face {
-          font-family: Poppins;
-          font-style: normal;
-          font-display: swap;
-          font-weight: 600;
-          src: url(poppins-latin-ext-600-normal.472ef062.woff2) format("woff2"),
-            url(poppins-all-600-normal.29420735.woff) format("woff");
-          unicode-range: U+100-24F, U+259, U+1E??, U+2020, U+20A0-20AB,
-            U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-        }
-        @font-face {
-          font-family: Poppins;
-          font-style: normal;
-          font-display: swap;
-          font-weight: 600;
-          src: url(poppins-latin-600-normal.15391d77.woff2) format("woff2"),
-            url(poppins-all-600-normal.29420735.woff) format("woff");
-          unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC,
-            U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-            U+FEFF, U+FFFD;
-        }
-      </style>
-      <div id="plasmo-shadow-container" style="z-index: 1; position: absolute">
-        <div
-          id="plasmo-mount-container"
-          style="display: flex; position: relative; top: 0px; left: 0px"
-        ></div></div
-    ></template>
-  </div>
-  <body cz-shortcut-listen="true">
     <div class="container banner-container">
-      <div style="padding: 50px 0 0 0">
-        <h1 class="text-center">
-          The <b>template</b> website for academic papers
-        </h1>
-        <br />
-        <div class="text-center">
-          <img
-            src="https://via.placeholder.com/800x400"
-            alt="Main image"
-            width="50%"
-          />
+        <div style="padding: 50px 0 0 0">
+            <h1 class="text-center">Корпус спонтанной русской речи</h1>
+            <br>
+            <div class="text-center">
+                <p class="lead">
+                    Проект по созданию и анализу корпуса спонтанной русской речи с семантическими интерпретациями
+                </p>
+            </div>
         </div>
-        <br />
-        <div class="buttons" style="margin-bottom: 8px; text-align: center">
-          <a
-            class="btn btn-primary"
-            role="button"
-            href="https://github.com/apartresearch/paper-website"
-            target="”_blank”"
-          >
-            <svg
-              style="
-                width: 24px;
-                height: 24px;
-                margin-left: -12px;
-                margin-right: 12px;
-              "
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M16 0H8C6.9 0 6 .9 6 2V18C6 19.1 6.9 20 8 20H20C21.1 20 22 19.1 22 18V6L16 0M20 18H8V2H15V7H20V18M4 4V22H20V24H4C2.9 24 2 23.1 2 22V4H4M10 10V12H18V10H10M10 14V16H15V14H10Z"
-              ></path></svg
-            >Paper
-          </a>
-          <a
-            class="btn btn-primary"
-            role="button"
-            href="https://github.com/apartresearch/paper-website"
-            target="”_blank”"
-          >
-            <svg
-              style="
-                width: 24px;
-                height: 24px;
-                margin-left: -12px;
-                margin-right: 12px;
-              "
-              width="24px"
-              height="24px"
-              class="svg-inline--fa fa-github fa-w-16"
-              aria-hidden="true"
-              focusable="false"
-              data-prefix="fab"
-              data-icon="github"
-              role="img"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 496 512"
-              data-fa-i2svg=""
-            >
-              <path
-                fill="currentColor"
-                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-              ></path></svg
-            >Code
-          </a>
-          <a
-            class="btn btn-primary"
-            role="button"
-            target="_blank"
-            href="https://github.com/apartresearch/paper-website"
-          >
-            <svg
-              style="
-                width: 24px;
-                height: 24px;
-                margin-left: -12px;
-                margin-right: 12px;
-              "
-              width="24px"
-              height="24px"
-              viewBox="0 0 375 531"
-            >
-              <polygon
-                fill="currentColor"
-                points="0.5,0.866 459.5,265.87 0.5,530.874 "
-              ></polygon>
-            </svg>
-            Interactive application
-          </a>
-        </div>
-      </div>
     </div>
+
     <div class="outer-container">
-      <div class="container main-container">
-        <div class="row">
-          <div class="col-md-12" style="text-align: center">
-            <em><p>Write a short problem statement.</p></em>
-          </div>
-        </div>
-        <br />
+        <div class="container main-container">
+            <!-- О проекте -->
+            <section>
+                <h2 class="section-title">О проекте</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            Данный проект представляет собой корпус спонтанной русской речи, собранный в рамках магистерской работы. 
+                            Корпус содержит аудиозаписи диалогов, их расшифровки и семантические интерпретации.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-        <!-- SECTION ---------------------------------------------------------------------- -->
-        <h1>INSERT TITLE</h1>
-        <div class="row">
-          <div class="col-md-12">
-            <p>
-              Abstract text: Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl
-              aliquet nunc, nec aliquam nisl nunc vitae nisl. Nulla facilisi.
-              Nulla facilisi. Nulla facilisi. Nulla facilisi. Nulla facilisi.
-            </p>
-          </div>
-        </div>
-        <div class="row captioned_img">
-          <div class="col-md-12">
-            <br />
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Abstract image"
-              width="100%"
-            />
-            <div class="caption">
-              Write figure caption: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc
-              nisl aliquet nunc, nec aliquam nisl nunc vitae nisl.
-            </div>
-          </div>
-        </div>
-        <hr class="divider" />
+            <!-- Об авторе -->
+            <section>
+                <h2 class="section-title">Об авторе</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="img/author_photo.jpg" alt="Фото автора" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Локалина Юлия Сергеевна</h3>
+                        <p>Магистрант Университета ИТМО</p>
+                        <p>Магистерская программа "Digital Humanities"</p>
+                        <p>Тема работы: "Исследование спонтанной русской речи для подготовки учебно-методических материалов для курсов по русскому языку для иностранных студентов"</p>
+                    </div>
+                </div>
+            </section>
 
-        <!-- SECTION ---------------------------------------------------------------------- -->
-        <h1>Methods section</h1>
+            <!-- Структура датасета -->
+            <section>
+                <h2 class="section-title">Структура датасета</h2>
+                <div class="dataset-controls">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <input type="text" id="phraseSearch" class="form-control" placeholder="Поиск по фразам...">
+                        </div>
+                        <div class="col-md-3">
+                            <select id="roleFilter" class="form-select">
+                                <option value="">Все роли</option>
+                                <option value="I">Интервьюируемый</option>
+                                <option value="R">Респондент</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="dialogFilter" class="form-select">
+                                <option value="">Все диалоги</option>
+                                <option value="1">Диалог 1</option>
+                                <option value="2">Диалог 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="dataset-table">
+                    <table id="datasetTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Диалог ID</th>
+                                <th>Роль</th>
+                                <th>Исходная фраза</th>
+                                <th>Интерпретация</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>I</td>
+                                <td>Поступление в ИТМО было для меня зашкваром</td>
+                                <td>Поступление было для меня крайне тяжёлым и непонятным процессом</td>
+                                <td>
+                                    <button class="play-button" onclick="playAudio('/speech_examples/conversation_1_role_I_1.mp3', this)">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>R</td>
+                                <td>Что Вы первым делом зачикинили, когда попали в ИТМО?</td>
+                                <td>Что Вы первым делом заприметили, когда попали в ИТМО</td>
+                                <td>
+                                    <button class="play-button" onclick="playAudio('/speech_examples/conversation_1_role_R_2.mp3', this)">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-        <div class="row">
-          <div class="col-md-12">
-            <p>
-              Write methods text: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc
-              nisl aliquet nunc, nec aliquam nisl nunc vitae nisl. Nulla
-              facilisi.
-            </p>
-            <p>
-              More methods text: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc
-              nisl aliquet nunc, nec aliquam nisl nunc vitae nisl. Nulla
-              facilisi.
-              <a href="https://apartresearch.com">A link to somewhere</a>!
-            </p>
-          </div>
-        </div>
+            <!-- Демонстрация датасета -->
+            <section>
+                <h2 class="section-title">Демонстрация датасета</h2>
+                <div class="demo-container">
+                    <h3>Ситуация первая</h3>
+                    <button class="btn btn-primary mb-4" id="playDemoBtn">Воспроизвести диалог</button>
+                    <div class="dialog-container">
+                        <!-- Сообщения будут добавляться динамически -->
+                    </div>
+                </div>
+            </section>
 
-        <!-- Uncomment this to make an interesting table of information -->
-        <!-- <div class="row" style="text-align: center">
-          <div class="col-md-6">
-            <p class="stat">134</p>
-            <p class="statlabel">Games</p>
-          </div>
-          <div class="col-md-6">
-            <p class="stat">4,559</p>
-            <p class="statlabel">Achievements</p>
-          </div>
+            <!-- Контакты и публикации -->
+            <section>
+                <h2 class="section-title">Контакты и публикации</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-card">
+                            <i class="fab fa-telegram contact-icon"></i>
+                            <h3>Telegram</h3>
+                            <p><a href="https://t.me/valeonl" target="_blank">@valeonl</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-card">
+                            <i class="fas fa-graduation-cap contact-icon"></i>
+                            <h3>ITMO ID</h3>
+                            <p><a href="https://isu.ifmo.ru/pls/apex/f?p=2437:7:107856783091285:::::" target="_blank">Профиль ИТМО</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="row" style="text-align: center">
-          <div class="col-md-6">
-            <p class="stat">572,322</p>
-            <p class="statlabel">Scenarios</p>
-          </div>
-          <div class="col-md-6">
-            <p class="stat">2,861,610</p>
-            <p class="statlabel">Annotations</p>
-          </div>
-        </div> -->
-        <hr class="divider" />
-
-        <!-- SECTION ---------------------------------------------------------------------- -->
-        <h1>Results section</h1>
-        <div class="row">
-          <div class="col-md-12">
-            <p>
-              Write results text: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc
-              nisl aliquet nunc, nec aliquam nisl nunc vitae nisl. Nulla
-              facilisi.
-            </p>
-
-            <p>
-              More results text: Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc
-              nisl aliquet nunc, nec aliquam nisl nunc vitae nisl. Nulla
-              facilisi.
-            </p>
-          </div>
-        </div>
-        <div class="row captioned_img">
-          <div class="col-md-12">
-            <br />
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Pareto"
-              width="100%"
-            />
-            <div class="caption">
-              Caption text: Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl
-              aliquet nunc, nec aliquam nisl nunc vitae nisl.
-            </div>
-          </div>
-        </div>
-        <hr class="divider" />
-
-        <!-- SECTION ---------------------------------------------------------------------- -->
-        <h1>Authors</h1>
-        <br />
-        <div class="row authors">
-          <div class="col-sm-3">
-            <h5 class="text-center">
-              <a
-                class="text-center"
-                href="https://github.com/apartresearch/paper-website"
-                >Esben Kran*</a
-              >
-            </h5>
-            <div class="text-center">Apart Research</div>
-          </div>
-          <div class="col-sm-3">
-            <h5 class="text-center">
-              <a
-                class="text-center"
-                href="https://github.com/apartresearch/paper-website"
-                >Author 2</a
-              >
-            </h5>
-            <div class="text-center">Apart Research</div>
-          </div>
-        </div>
-        <div class="row authors">
-          <div class="col-sm-3">
-            <h5 class="text-center">
-              <a
-                class="text-center"
-                href="https://github.com/apartresearch/paper-website"
-                >New row author</a
-              >
-            </h5>
-            <div class="text-center">Apart Research</div>
-          </div>
-        </div>
-        <hr class="divider" />
-        <br />
-
-        <!-- SECTION ---------------------------------------------------------------------- -->
-        <h1>Citation</h1>
-        <br />
-        <div class="row">
-          <div class="col-md-12">
-            <code>
-              @article{cite2023paper,<br />
-              &nbsp; author = {authors...},<br />
-              &nbsp; title = {full paper title...},<br />
-              &nbsp; journal = {journal name...},<br />
-              &nbsp; year = {2023},<br />
-              }</code
-            >
-          </div>
-        </div>
-      </div>
     </div>
-    <script src="files/scripts.js"></script>
-    <script src="files/jquery.min.js"></script>
-    <script src="files/bootstrap.bundle.min.js"></script>
-    <!-- Import the component -->
-
-    <main>
-      <canvas
-        id="defaultCanvas0"
-        class="p5Canvas"
-        width="4112"
-        height="2424"
-        style="width: 2056px; height: 1212px"
-      ></canvas>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-      // Assume markdownContent contains your Markdown text
-      let markdownContent = document.getElementById("content").innerText;
+        // Инициализация интерактивного фона
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#4a90e2' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: '#4a90e2', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 3, direction: 'none', random: false, straight: false, out_mode: 'out' }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
 
-      // Use marked library to convert Markdown to HTML
-      let htmlContent = marked(markdownContent);
+        // Инициализация таблицы с данными
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/ru.json'
+                },
+                pageLength: 10,
+                responsive: true
+            });
 
-      // Replace the content of the element with id "content" with HTML
-      document.getElementById("content").innerHTML = htmlContent;
+            // Обработчик для демонстрации диалога
+            $('#playDemoBtn').click(function() {
+                const dialogContainer = $('.dialog-container');
+                dialogContainer.empty();
+                
+                const messages = [
+                    {
+                        type: 'interviewer',
+                        text: 'Что Вы первым делом зачикинили, когда попали в ИТМО?',
+                        audio: null
+                    },
+                    {
+                        type: 'respondent',
+                        text: 'Поступление в ИТМО было для меня зашкваром',
+                        interpretation: 'Поступление было для меня крайне тяжёлым и непонятным процессом',
+                        audio: '/speech_examples/conversation_1_role_R_2.mp3'
+                    }
+                ];
+
+                let currentIndex = 0;
+
+                function showMessage() {
+                    if (currentIndex < messages.length) {
+                        const message = messages[currentIndex];
+                        const messageHtml = `
+                            <div class="message ${message.type}">
+                                <div class="message-avatar">
+                                    ${message.type === 'interviewer' ? 'И' : 'Р'}
+                                </div>
+                                <div class="message-content">
+                                    <div class="text">${message.text}</div>
+                                    ${message.interpretation ? 
+                                        `<div class="message-interpretation">${message.interpretation}</div>` : 
+                                        ''}
+                                </div>
+                            </div>
+                        `;
+                        dialogContainer.append(messageHtml);
+                        
+                        // Добавляем класс show для анимации
+                        setTimeout(() => {
+                            dialogContainer.find('.message').last().addClass('show');
+                        }, 100);
+                        
+                        // Воспроизводим аудио только для второго сообщения
+                        if (message.audio && currentIndex === 1) {
+                            const audio = new Audio(message.audio);
+                            audio.play();
+                        }
+                        
+                        currentIndex++;
+                        setTimeout(showMessage, 2000);
+                    }
+                }
+
+                showMessage();
+            });
+        });
     </script>
-  </body>
+</body>
 </html>

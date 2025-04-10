@@ -1,0 +1,278 @@
+/* Импорт внешних стилей */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+@import url('https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css');
+@import url('../files/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Основные переменные */
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #4285f4;
+    --accent-color: #34a853;
+    --background-light: #f8f9fa;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Общие стили */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--background-light);
+    line-height: 1.6;
+}
+
+/* Контейнеры */
+.banner-container {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 6rem 0;
+    margin-bottom: 3rem;
+    border-radius: 0 0 3rem 3rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-container {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.outer-container {
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Заголовки */
+.section-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* Карточки контактов */
+.contact-card {
+    background: var(--background-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Датасет */
+.dataset-controls {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.dataset-table {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+/* DataTables кастомизация */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 0.5rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--secondary-color) !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Демо-контейнер */
+.demo-container {
+    background: var(--background-light);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.demo-player {
+    margin-top: 20px;
+}
+
+.demo-content {
+    margin-top: 20px;
+}
+
+/* Диалоги */
+.dialog-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-md);
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message.interviewer {
+    flex-direction: row;
+}
+
+.message.respondent {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin: 0 1rem;
+}
+
+.message-content {
+    background: var(--background-light);
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 70%;
+    position: relative;
+}
+
+.message.interviewer .message-content {
+    background: var(--background-light);
+    border-top-left-radius: 0;
+}
+
+.message.respondent .message-content {
+    background: var(--primary-color);
+    color: white;
+    border-top-right-radius: 0;
+}
+
+.message-interpretation {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.message.interviewer .message-interpretation {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-secondary);
+}
+
+/* Кнопки проигрывания */
+.play-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.play-button:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.play-button:active {
+    transform: scale(0.95);
+}
+
+/* Транскрипция и интерпретация */
+#transcription, #interpretation {
+    padding: 1rem;
+    margin: 1rem 0;
+    background: white;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--secondary-color);
+}
+
+#interpretation {
+    border-left-color: var(--accent-color);
+}
+
+/* Утилиты */
+.hidden {
+    display: none;
+}
+
+section {
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+} 
