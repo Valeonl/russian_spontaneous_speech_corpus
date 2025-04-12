@@ -4,58 +4,41 @@ document.write('<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTab
 document.write('<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>');
 document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>');
 
-// Инициализация интерактивного фона
-document.addEventListener('DOMContentLoaded', function() {
+// Глобальная переменная для хранения текущего аудио
+let currentAudio = null;
+
+// Функция для проверки загрузки particles.js
+function waitForParticles(callback) {
+    if (window.particlesJS) {
+        callback();
+    } else {
+        setTimeout(() => waitForParticles(callback), 50);
+    }
+}
+
+// Функция инициализации particles.js
+function initParticles() {
     particlesJS('particles-js', {
         particles: {
             number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: '#ffffff' },
+            color: { value: '#4a90e2' },
             shape: { type: 'circle' },
-            opacity: {
-                value: 0.5,
-                random: false,
-                animation: { enable: true, speed: 1, minimumValue: 0.1, sync: false }
-            },
-            size: {
-                value: 3,
-                random: true,
-                animation: { enable: true, speed: 2, minimumValue: 0.1, sync: false }
-            },
-            lineLinked: {
-                enable: true,
-                distance: 150,
-                color: '#ffffff',
-                opacity: 0.4,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 1,
-                direction: 'none',
-                random: false,
-                straight: false,
-                outMode: 'out',
-                bounce: false
-            }
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: '#4a90e2', opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 3, direction: 'none', random: false, straight: false, out_mode: 'out' }
         },
         interactivity: {
-            detectOn: 'canvas',
+            detect_on: 'canvas',
             events: {
-                onHover: { enable: true, mode: 'grab' },
-                onClick: { enable: true, mode: 'push' },
+                onhover: { enable: true, mode: 'repulse' },
+                onclick: { enable: true, mode: 'push' },
                 resize: true
-            },
-            modes: {
-                grab: { distance: 140, lineLinked: { opacity: 1 } },
-                push: { particles_nb: 4 }
             }
         },
         retina_detect: true
     });
-});
-
-// Глобальная переменная для хранения текущего аудио
-let currentAudio = null;
+}
 
 // Функция воспроизведения аудио
 function playAudio(src, button) {
@@ -65,9 +48,11 @@ function playAudio(src, button) {
     if (currentAudio && currentAudio.src !== src) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
-        const prevButton = document.querySelector('.fa-pause').parentElement;
-        prevButton.querySelector('i').classList.remove('fa-pause');
-        prevButton.querySelector('i').classList.add('fa-play');
+        const prevButton = document.querySelector('.fa-pause')?.parentElement;
+        if (prevButton) {
+            prevButton.querySelector('i').classList.remove('fa-pause');
+            prevButton.querySelector('i').classList.add('fa-play');
+        }
     }
 
     // Если это первое воспроизведение или новый файл
@@ -91,31 +76,75 @@ function playAudio(src, button) {
     }
 }
 
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    waitForParticles(initParticles);
+});
+
+// Экспортируем функции
+window.playAudio = playAudio;
+window.playDemo = playDemo;
+
 // Инициализация DataTables
 $(document).ready(function() {
-    const table = $('#datasetTable').DataTable({
+    // Инициализация таблицы
+    window.dataTable = $('#datasetTable').DataTable({
         language: {
             url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/ru.json'
         },
-        pageLength: 10,
-        dom: 'rtip',
-        order: [[0, 'asc']]
+        pageLength: 5,
+        lengthMenu: [5, 10, 25, 50],
+        responsive: true,
+        dom: '<"top"lf>rt<"bottom"ip><"clear">',
+        order: [[0, 'asc']],
+        columns: [
+            { title: "ID" },
+            { title: "Диалог ID" },
+            { title: "Роль" },
+            { title: "Исходная фраза" },
+            { title: "Интерпретация" },
+            { 
+                title: "Действия",
+                orderable: false,
+                searchable: false,
+                width: "80px"
+            }
+        ]
     });
 
     // Поиск по фразам
     $('#phraseSearch').on('keyup', function() {
-        table.search(this.value).draw();
+        window.dataTable.search(this.value).draw();
     });
 
     // Фильтрация по роли
     $('#roleFilter').on('change', function() {
-        table.column(2).search(this.value).draw();
+        window.dataTable.column(2).search(this.value).draw();
     });
 
     // Фильтрация по диалогу
     $('#dialogFilter').on('change', function() {
-        table.column(1).search(this.value).draw();
+        window.dataTable.column(1).search(this.value).draw();
     });
+
+    // Обработчик клика на кнопку раскрытия
+    $(document).on('click', '.expand-button', function(e) {
+        e.preventDefault();
+        const $button = $(this);
+        const $cell = $button.closest('.text-cell');
+        
+        $cell.toggleClass('expanded');
+        $button.toggleClass('expanded');
+        
+        // Перерисовываем таблицу для корректного отображения
+        window.dataTable.draw(false);
+    });
+
+    // Загружаем данные
+    initializeData();
+
+    // Обновляем данные каждые 30 секунд
+    setInterval(initializeData, 10000);
 });
 
 // Функция для демонстрационного плеера
